@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_SERVER;
 
@@ -14,15 +15,16 @@ const Book = ({ book, sd, showBtn }) => {
   //   event.preventDefault();
   //   router.push(`/update/${book._id.toString()}`);
   // };
+  const noImage = "/noImage.jpg";
+
   const buttonStyle = {
     margin: "2%",
   };
-  const handelDelete = () => {};
+  const handelDelete = async () => {
+    const response = await axios.delete(`${BACKEND_URL}/delete/${book._id}`);
+  };
   return (
     <Stack direction={"row"}>
-      <Box>
-        <Navbar />
-      </Box>
       <Box
         sx={{
           margin: "1%",
@@ -36,15 +38,17 @@ const Book = ({ book, sd, showBtn }) => {
         }}
       >
         <Stack direction={"row"}>
-          <Image
-            src={book.thumbnailurl}
-            height={300}
-            width={200}
-            style={{ border: "none", borderRadius: "15px" }}
-            objectFit="cover"
-            overflow="hidden"
-            alt={book.title}
-          />
+          {book.thumbnailurl && (
+            <Image
+              src={book?.thumbnailurl || noImage}
+              height={300}
+              width={200}
+              style={{ border: "none", borderRadius: "15px" }}
+              objectFit="cover"
+              overflow="hidden"
+              alt={book.title}
+            />
+          )}
           <Stack direction={"column"} sx={{ margin: "2%", width: "80%" }}>
             <Typography fontWeight={"bold"}>{book.title}</Typography>
             <Typography>
@@ -70,13 +74,18 @@ const Book = ({ book, sd, showBtn }) => {
             <Typography fontWeight={"bold"}>₹ {book.price}</Typography>
             {
               <Stack direction={"row"}>
-                <Link href={`/update/${book._id.toString()}`}>
+                <Link href={`/update/${book._id}`}>
                   <Button variant="contained" color="success" sx={buttonStyle}>
                     <Typography fontWeight={"bold"}>UPDATE</Typography>
                   </Button>
                 </Link>
-                <Link href={`/delete/${book._id.toString()}`}>
-                  <Button variant="contained" color="error" sx={buttonStyle}>
+                <Link href={`/delete/${book._id}`}>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    sx={buttonStyle}
+                    onClick={handelDelete}
+                  >
                     <Typography fontWeight={"bold"}>DELETE</Typography>
                   </Button>
                 </Link>

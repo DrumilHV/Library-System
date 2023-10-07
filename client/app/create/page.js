@@ -7,12 +7,12 @@ import Image from "next/legacy/image";
 
 import { TextareaAutosize } from "@mui/base/TextareaAutosize";
 import { Box, Button, Stack, Typography } from "@mui/material";
-import Navbar from "@/app/components/Navbar";
+import Navbar from "../components/Navbar";
 import { useRouter } from "next/router";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_SERVER;
 
-const Create = ({ params: { id } }) => {
+const Create = () => {
   const sd = false;
   const formStyle = {
     minWidth: "100%",
@@ -61,7 +61,7 @@ const Create = ({ params: { id } }) => {
         price: price,
       };
 
-      console.log("This is updated books ->>\n\n", createdBook);
+      console.log("This is Created books ->>\n\n", createdBook);
       axios.post(`${BACKEND_URL}/create`, createdBook);
     }
   };
@@ -83,15 +83,7 @@ const Create = ({ params: { id } }) => {
         }}
       >
         <Stack direction={"row"}>
-          <Box sx={{ margin: "2%" }}>
-            <Image
-              src={book.thumbnailurl}
-              height={300}
-              width={200}
-              style={{ objectFit: "cover", overflow: "hidden" }}
-              alt={book.title}
-            />
-          </Box>
+          <Box sx={{ margin: "2%" }}></Box>
           <Stack direction={"column"}>
             <Typography fontWeight={"bold"}>Title</Typography>
             <textarea

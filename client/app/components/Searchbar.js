@@ -1,14 +1,17 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { Search } from "@mui/icons-material";
 import { Paper, IconButton } from "@mui/material";
-import { bookData } from "../dummData";
+// import { bookData } from "../dummData";
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
+  useEffect(() => {
+    setSearchTerm("");
+  }, []);
 
   const handelSubmit = (e) => {
     e.preventDefault();

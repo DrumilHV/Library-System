@@ -72,17 +72,18 @@ export default function Home() {
       ) : (
         <>
           <Stack direction={"row"}>
-            <SidebarCostum
-              setEndDate={setEndDate}
-              setStartDate={setStartDate}
-              setGenre={setGenre}
-              setOrder={setOrder}
-              setPaid={setPaid}
-              getQueryResult={getQueryResult}
-            />
             <Box>
+              <SidebarCostum
+                setEndDate={setEndDate}
+                setStartDate={setStartDate}
+                setGenre={setGenre}
+                setOrder={setOrder}
+                setPaid={setPaid}
+                getQueryResult={getQueryResult}
+              />
               <Navbar />
             </Box>
+            <Box></Box>
             <Stack sx={{ marginTop: "5%" }}>
               {(bookData === undefined || bookData.length) === 0 ? ( // Check if bookData is empty
                 <h1>No data available.</h1> // Display a message when there's no data
@@ -90,7 +91,7 @@ export default function Home() {
                 bookData.map((book) => (
                   <Link
                     key={book._id}
-                    href={`/book/bookDetils/${book._id.toString()}`}
+                    href={`/book/bookDetils/${book._id}`}
                     style={{ textDecoration: "none", color: "black" }}
                   >
                     <Book key={book._id} book={book} sd={true} />

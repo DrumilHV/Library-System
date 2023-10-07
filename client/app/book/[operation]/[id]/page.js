@@ -4,7 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 // import { useSearchParams } from "next/navigation";
 
-import Navbar from "@/app/components/Navbar";
+import Navbar from "../../../components/Navbar";
 import { Box, Stack, Typography } from "@mui/material";
 import { CircularProgress } from "@mui/material";
 import Book from "../../../components/Book";

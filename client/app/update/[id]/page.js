@@ -7,7 +7,7 @@ import Image from "next/legacy/image";
 
 import { TextareaAutosize } from "@mui/base/TextareaAutosize";
 import { Box, Button, Stack, Typography } from "@mui/material";
-import Navbar from "@/app/components/Navbar";
+import Navbar from "../../components/Navbar";
 import { useRouter } from "next/router";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_SERVER;
@@ -107,13 +107,15 @@ const Page = ({ params: { id } }) => {
       >
         <Stack direction={"row"}>
           <Box sx={{ margin: "2%" }}>
-            <Image
-              src={book.thumbnailurl}
-              height={300}
-              width={200}
-              style={{ objectFit: "cover", overflow: "hidden" }}
-              alt={book.title}
-            />
+            {book.thumbnailurl && (
+              <Image
+                src={book.thumbnailurl}
+                height={300}
+                width={200}
+                style={{ objectFit: "cover", overflow: "hidden" }}
+                alt={book.title}
+              />
+            )}
           </Box>
           <Stack direction={"column"}>
             <Typography fontWeight={"bold"}>Title</Typography>
