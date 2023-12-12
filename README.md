@@ -43,7 +43,7 @@ INTERNAL_DATABASE_URL=
 EXTERNAL_DATABASE_URL=
 PLSQ_COMMAND=
 ```
-(if you are usign local postgresql server then you will not requre last 3 environment varaiables. but additionally you will have to connect to postgresql using usign the first 5 varaiables by looking at  I have hosted my postgresql database on https://render.com/ so I get the additional urls and psql_command)
+(if you are usign local postgresql server then you will not requre last 3 environment varaiables. but additionally you will have to connect to postgresql using usign the first 5 varaiables by looking at the documentation. I have hosted my postgresql database on https://render.com/ so I get the additional urls and psql_command)
 
 step 3) run project
 
