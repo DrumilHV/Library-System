@@ -10,7 +10,7 @@ from random import randint, random
 def create_connection():
     try:
         connection = psycopg2.connect(
-            "postgres://drumil:28Jr90KoNfpMgW0JV98O96IJaEd0oa0E@dpg-cm6igc8cmk4c738ouog0-a.oregon-postgres.render.com/books_zhc5_njk8"
+            ""
         )
         return connection
     except (Exception, psycopg2.Error) as error:
